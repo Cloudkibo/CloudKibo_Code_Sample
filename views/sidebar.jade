@@ -1,0 +1,79 @@
+extends layout
+block content
+  div#header
+    h3
+      center Data Extraction Application
+    a(href="#",class="btn btn-default",id="opener")
+      i(class="fa fa-bars")
+   
+  div(id = "slide-panel")
+    div#nav
+      ul
+        li 
+          if(currentURL == '/waitingcalls/')
+            a(href='/waitingcalls/').current
+          else
+            a(href='/waitingcalls/')
+              i(class="glyphicon glyphicon-earphone")
+                span(class="title")
+                  | Waiting Calls 
+        
+        li 
+          if(currentURL == '/inprogresscalls/')
+            a(href='/inprogresscalls/').current 
+          else
+            a(href='/inprogresscalls/')
+              i(class="glyphicon glyphicon-link")
+                span(class="title")
+                  | InProgress Calls 
+                  
+        li 
+          if(currentURL == '/abandonedcalls/')
+            a(href='/abandonedcalls/').current 
+          else
+            a(href='/abandonedcalls/')
+              i(class="fa fa-chain-broken")
+                span(class="title")
+                  | Abandoned Calls 
+        
+        li 
+          if(currentURL == '/completedcalls/')
+            a(href='/completedcalls/').current 
+          else
+            a(href='/completedcalls/')
+              i(class="glyphicon glyphicon-phone-alt" , aria-hidden="true")
+                span(class="title")
+                  | Completed Calls 
+        li 
+          if(currentURL == '/consolidatedcalls/')
+            a(href='/consolidatedcalls/').current
+          else
+            a(href='/consolidatedcalls/')
+              i(class="glyphicon glyphicon-saved" , aria-hidden="true")
+                span(class="title")
+                  | Consolidated Calls 
+        li 
+          if(currentURL == '/agents/')
+            a(href='/agents/').current 
+          else
+            a(href='/agents/')
+              i(class="fa fa-user" , aria-hidden="true")
+                span(class="title")
+                  | Agents 
+        li 
+          if(currentURL == '/groups/')
+            a(href='/groups/').current 
+          else
+            a(href='/groups/')
+              i(class="fa fa-group" , aria-hidden="true")
+                span(class="title")
+                  | Groups
+        li 
+          if(currentURL == '/company/')
+            a(href='/company/').current 
+          else
+            a(href='/company/')
+              i(class="glyphicon glyphicon-briefcase" , aria-hidden="true")
+                span(class="title")
+                  | Company          
+  block div#mycontent

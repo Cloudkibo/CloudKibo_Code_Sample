@@ -1,0 +1,86 @@
+/* aash1010 */
+body
+{
+	overflow: hidden;
+}
+#header
+{
+  margin-top : -10px;
+  width : 100%;
+  background-color : #2b3643;
+  height : 50px;
+  padding : 5px;
+}
+#header h3
+{
+color : #7BC5E2;
+margin-top : 10px;
+
+
+}
+#header i
+{
+font-size :20px;
+
+
+}
+#slide-panel {
+    width:300px;
+    height:800px;
+    padding:10px;
+    background-color: #28303b;
+    margin-left:-300px;
+    float: left;
+    max-width: 300px;
+}
+#nav  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#nav ul li{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+span.title
+{
+padding-left : 10px;
+font-family :'Century Gothic';
+}
+#nav ul li a{
+display: block;
+    position: relative;
+    margin: 0;
+    border: 0px;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: #b4bcc8;
+}
+#nav ul li a:hover{
+background-color :#525C69;
+
+}
+#nav ul li a i{
+color: #606C7D;
+    font-size: 20px;
+    margin-right: 5px;
+    text-shadow: none;
+}
+#nav ul li a:hover i{
+color: #fff;
+   }
+#opener {
+    float:left;
+    margin-top:-40px;
+    border-radius:0;
+}
+#mycontent
+{
+    height: 500px;
+    width: 100%;
+    float: left;
+	padding-left: 5%;
+}
