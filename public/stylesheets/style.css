@@ -84,3 +84,18 @@ color: #fff;
     float: left;
 	padding-left: 5%;
 }
+#footer
+{
+  bottom : 0px;
+  width : 100%;
+  background-color : #2b3643;
+  padding : 5px;
+  position: absolute
+}
+.cc
+{
+color : #7BC5E2;
+font-size : 16px;
+
+
+}
