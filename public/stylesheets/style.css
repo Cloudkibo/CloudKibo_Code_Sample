@@ -99,3 +99,46 @@ font-size : 16px;
 
 
 }
+.table-scrollable
+{
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: 1px solid #dddddd;
+    margin: 10px 0 !important;
+}
+.caption
+{
+   padding-top: 30px;
+    border: 1px solid #DAD4D4;
+    margin: 5px;
+}
+.caption i{
+    color: #606C7D;
+    font-size: 20px;
+   padding-left : 30px;
+    margin-right: 5px;
+    text-shadow: none;
+}
+.caption i span
+{
+padding-left : 10px;
+font-weight: 600;
+font-family :'Century Gothic';
+font-size : 20px;
+}
+
+table#agents thead 
+{
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    background-color : #92D6D6;
+}
+table#agent tbody
+{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+
+}
