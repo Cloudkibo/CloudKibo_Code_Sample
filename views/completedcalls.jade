@@ -2,7 +2,7 @@ extends sidebar
 block div#mycontent
   
   div.caption
-    i(class = "fa fa-group")
+    i(class = "glyphicon glyphicon-phone-alt")
       span 
         |Completed Calls Information
     div.bodycontainer.table-scrollable
@@ -26,6 +26,9 @@ block div#mycontent
                 |Agent Name
             td
               span
+                |Duration
+            td
+              span
                 |Initiator
             
         tbody
@@ -37,6 +40,7 @@ block div#mycontent
                 td=object.question
                 td=object.currentPage
                 td=object.agentname
+                td=duration(object.picktime,object.endtime)
                 td=object.initiator
           else
               tr

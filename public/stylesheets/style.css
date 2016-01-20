@@ -159,3 +159,9 @@ table#agent tbody
   float: left;
   border-bottom-width: 0;
 }
+.downloadcsv
+{
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}

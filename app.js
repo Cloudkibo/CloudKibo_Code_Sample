@@ -5,7 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var agents = require('./routes/agents');
+var groups = require('./routes/groups');
+var completedcalls = require('./routes/completedcalls');
+var waitingcalls = require('./routes/waitingcalls');
+var inprogresscalls = require('./routes/inprogresscalls');
+var consolidatedcalls = require('./routes/consolidatedcalls');
+var abandonedcalls = require('./routes/abandonedcalls');
+var companyprofile = require('./routes/companyprofile');
+
+
+
 
 var app = express();
 
@@ -22,7 +32,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/', agents);
+app.use('/', groups);
+app.use('/', completedcalls);
+app.use('/', waitingcalls);
+app.use('/',inprogresscalls);
+app.use('/', consolidatedcalls);
+app.use('/',abandonedcalls);
+app.use('/',companyprofile);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

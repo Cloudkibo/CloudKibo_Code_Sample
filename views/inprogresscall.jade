@@ -1,8 +1,7 @@
 extends sidebar
 block div#mycontent
-  
   div.caption
-    i(class = "fa fa-group")
+    i(class = "glyphicon glyphicon-link")
       span 
         |InProgress Calls Information
     div.bodycontainer.table-scrollable
@@ -23,6 +22,9 @@ block div#mycontent
                 |Current Page
             td
               span
+                |Call Duration
+            td
+              span
                 |Agent Name
             td
               span
@@ -36,10 +38,11 @@ block div#mycontent
                 td=object.useremail
                 td=object.question
                 td=object.currentPage
+                td=datenow(object.picktime)
                 td=object.agentname
                 td=object.initiator
           else
               tr
-                td(colspan = 6,style = "text-align:center;")="No calls have been completed or made."
+                td(colspan = 6,style = "text-align:center;")="No calls are in progress."
         
        
