@@ -4,6 +4,7 @@ var needle = require('needle');
 var https = require('https');
 var request = require('request');
 var moment = require('moment');
+var json2csv = require('json2csv');
 var  headers =  {
              'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
              'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
@@ -25,41 +26,7 @@ router.get('/completedcalls', function(req, res, next) {
             var dpt;
             var i =0;
             console.log(info.length)
-          //  console.log(info);
-       
-    /*   
-            for(var i = 0;i<info.length;i++)
-            {
-                    /***** to get department name ***/
-              /*    var options1 = {
-                      url: 'https://api.kibosupport.com/api/departments/'+info[i].departmentid,
-                      headers:headers
-                  };
-                  function callback_deptname(error, response, body) {
-                    if (!error && response.statusCode == 200) {
-                      dpt = JSON.parse(body);
-                      data.push(dpt.deptname);
-                      
-                    }
-                    else
-                      {
-
-                        data.push('Not found');
-                        console.log(error);
-                     
-                      }
-                      console.log(data)             
-                  }
-                  
-                 
-                request(options1, callback_deptname);
-                
-              
-            }
-            */
-             
-                  //  res.render('completedcalls',{mydata:info,data:data});
-      res.render('completedcalls',{mydata:info, duration: function(picktime,endtime) {
+            res.render('completedcalls',{mydata:info, duration: function(picktime,endtime) {
                                                                                             var then = moment(endtime, "YYYY-MM-DD'T'HH:mm:ss:SSSZ");
                                                                                             var now =  moment(picktime, "YYYY-MM-DD'T'HH:mm:ss:SSSZ");
                                                                                             var diff = moment.duration(then.diff(now));
@@ -86,5 +53,57 @@ router.get('/completedcalls', function(req, res, next) {
     request(options, callback);
 
     });
-    
+/********* downloadcsv ********/    
+  router.get('/completedcalls/downloadcsv/', function(req, res, next) {
+    res.set('Content-Type', 'application/octet-stream');
+      var options = {
+          url: 'https://api.kibosupport.com/api/visitorcalls/',
+          headers:headers
+        };
+      
+    function callback(error, response, body) {
+      if (!error && response.statusCode == 200) {
+            var info = JSON.parse(body);
+           // console.log(info);
+            var keys = [];
+            
+                  var key = 0;
+                  var val = info[0];
+                  for(j in val){
+                      var sub_key = j;
+                      var sub_val = val.j;
+                      //console.log(sub_key);
+                      keys.push(sub_key);
+                    
+                    }
+                    console.log(keys);
+
+
+           // var i =0;
+              json2csv({ data: info, fields: keys }, function(err, csv) {
+    if (err) {
+        console.log(err);
+    }
+
+    res.set({
+        'Content-Disposition': 'attachment; filename=visitorcalls.csv',
+        'Content-Type': 'text/csv'
+    });
+    res.send(csv);
+});
+
+          }
+      else
+        {
+          data = null;
+          console.log(error);
+        
+        //  res.render('agents',data);
+        
+        }
+     }
+ 
+    request(options, callback);
+
+  });    
 module.exports = router;

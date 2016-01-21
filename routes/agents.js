@@ -44,10 +44,12 @@ router.get('/agents', function(req, res, next) {
 /********* downloadcsv ********/    
   router.get('/agents/downloadcsv/', function(req, res, next) {
     res.set('Content-Type', 'application/octet-stream');
-    var fields = ['firstname','lastname','email','phone','country','city','state','isAgent','isAdmin','isOwner','isSupervisor','website','companyName','uniqueid','picture','accountVerified',
-                  'date','isDeleted','canIncludeAgent','canExcludeAgent','abandonedemail1','abandonedemail2','abandonedemail3','completedemail1','completedemail2',
-                  'completedemail3','invitedemail1','invitedemail2','invitedemail3','allownotification','allowchime','role','ownerAs','hashedPassword','provider','salt'];
-        var options = {
+ //   var fields = ['firstname','lastname','email','phone','country','city','state','isAgent','isAdmin','isOwner','isSupervisor','website','companyName','uniqueid','picture','accountVerified',
+ //                 'date','isDeleted','canIncludeAgent','canExcludeAgent','abandonedemail1','abandonedemail2','abandonedemail3','completedemail1','completedemail2',
+ //                 'completedemail3','invitedemail1','invitedemail2','invitedemail3','allownotification','allowchime','role','ownerAs','hashedPassword','provider','salt'];
+   
+      
+      var options = {
           url: 'https://api.kibosupport.com/api/users/allagents',
           headers:headers
         };
@@ -55,9 +57,22 @@ router.get('/agents', function(req, res, next) {
     function callback(error, response, body) {
       if (!error && response.statusCode == 200) {
             var info = JSON.parse(body);
-            var data =[];
-            var i =0;
-              json2csv({ data: info.agents, fields: fields }, function(err, csv) {
+            var keys = [];
+            
+                  var key = 0;
+                  var val = info.agents[0];
+                  for(j in val){
+                      var sub_key = j;
+                      var sub_val = val.j;
+                      
+                      console.log(sub_key);
+                      keys.push(sub_key);
+  
+                    }
+
+
+           // var i =0;
+              json2csv({ data: info.agents, fields: keys }, function(err, csv) {
     if (err) {
         console.log(err);
     }

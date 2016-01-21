@@ -44,7 +44,9 @@ block div#mycontent
                 td=object.initiator
           else
               tr
-                td(colspan = 6,style = "text-align:center;")="No waiting calls"
+                td(colspan = 7,style = "text-align:center;")="No waiting calls"
                   
+    a(href ='/completedcalls/downloadcsv/',class = "downloadcsv btn btn-info")
+          |Export Visitor Calls data in CSV
                 
        
