@@ -10,6 +10,16 @@ block content
     div#nav
       ul
         li 
+          if(currentURL == '/')
+            a(href='/').current
+          else
+            a(href='/')
+              i(class="fa fa-tachometer")
+                span(class="title")
+                  | Calls Statistics 
+        
+        
+        li 
           if(currentURL == '/waitingcalls/')
             a(href='/waitingcalls/').current
           else

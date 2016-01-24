@@ -1,0 +1,58 @@
+extends sidebar
+block div#mycontent
+  div.caption
+    i(class = "glyphicon glyphicon-link")
+      span 
+        |Contact List
+    div
+    div(class = "control-group span6")
+      label
+        | Search :
+       
+      input(type="search" class="light-table-filter form-control input-medium input-inline" data-table="contact" placeholder="Enter search term")
+  
+  
+    div.bodycontainer.table-scrollable
+      table(class = "table table-striped table-bordered table-hover contact",id = "agents")
+        thead
+          tr
+            td 
+              span
+                |Name
+            td
+              span
+                |Email
+            td
+              span
+                |Phone
+            td
+              span
+                |Kibo Name
+            td
+              span
+                |Status
+            td
+              span
+                |Details Shared
+            td
+              span
+                |Unread Message
+            
+        tbody
+         if (mydata.length != 0)
+            - each object in mydata
+              tr
+                td= object.contactid.firstname + ' ' + object.contactid.lastname
+                td=object.contactid.email
+                td=object.contactid.phone
+                td=object.contactid.username
+                td=object.contactid.status
+                td=object.detailsshared
+                td=object.unreadMessage
+          else
+              tr
+                td(colspan = 6,style = "text-align:center;")="You have no contacts."
+    a(href ='/contactlist/downloadcsv/',class = "downloadcsv btn btn-info")
+          |Export ContactList in CSV
+
+       

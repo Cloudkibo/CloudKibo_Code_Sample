@@ -1,4 +1,3 @@
-
 var express = require('express');
 var router = express.Router();
 var needle = require('needle');
@@ -12,11 +11,11 @@ var  headers =  {
              'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
              'kibo-client-id': 'cd89f71715f2014725163952'     
           }
-/*************************** Get groups information *********************************/
+/* GET home page. */
+router.get('/agentscallstats', function(req, res, next) {
 
-router.get('/groups', function(req, res, next) {
-    var options = {
-          url: 'https://api.kibosupport.com/api/departments',
+   var options = {
+          url: 'https://api.kibosupport.com/api/visitorcalls/agentcallstats',
           headers:headers
         };
 
@@ -26,8 +25,8 @@ router.get('/groups', function(req, res, next) {
             var data =[];
             var i =0;
             console.log(info.length)
-            console.log(info);  
-            res.render('groups',{mydata:info});
+            console.log(info);
+            res.render('agentscallstats',{myinfo:info});
 
           }
       else
@@ -41,31 +40,33 @@ router.get('/groups', function(req, res, next) {
  
     request(options, callback);
 
-    });
-    
-    
-    
-/********* downloadcsv ********/    
-  router.get('/groups/downloadcsv/', function(req, res, next) {
-    res.set('Content-Type', 'application/octet-stream');
-      var options = {
-          url: 'https://api.kibosupport.com/api/departments',
+ });
+ 
+ 
+ //write data in csv
+ router.get('/agentscallstats/downloadcsv', function(req, res, next) {
+
+   var options = {
+          url: 'https://api.kibosupport.com/api/visitorcalls/agentcallstats',
           headers:headers
         };
-      
+
     function callback(error, response, body) {
       if (!error && response.statusCode == 200) {
             var info = JSON.parse(body);
-            var keys = [];
-            var key = 0;
+            var data =[];
+            var i =0;
+            console.log(info.length)
+            console.log(info);
             var val = info[0];
+            var keys=[];
             for(j in val){
                   var sub_key = j;
                   var sub_val = val.j;
-                  if(sub_key == 'createdby')
+                  if(sub_key == '_id')
                         {
                           
-                          var valc = info[0].createdby;
+                          var valc = info[0]._id;
                           for(k in valc)
                           {
                             var sub_sub_key = k;
@@ -74,40 +75,37 @@ router.get('/groups', function(req, res, next) {
                             keys.push(sub_key+'.'+sub_sub_key);
                           }
                         }
-                        else
-                        {
-                            keys.push(sub_key);
-                        }
-                   
+                  else
+                  {
+                  keys.push(sub_key);
+                  }
+                  console.log(keys);
+            }
+            json2csv({ data: info, fields: keys }, function(err, csv) {
+                if (err) {
+                    console.log(err);
                 }
-                console.log(keys);
 
-
-           // var i =0;
-              json2csv({ data: info, fields: keys }, function(err, csv) {
-    if (err) {
-        console.log(err);
-    }
-
-    res.set({
-        'Content-Disposition': 'attachment; filename=groups.csv',
-        'Content-Type': 'text/csv'
-    });
-    res.send(csv);
-});
-
-          }
+              res.set({
+                  'Content-Disposition': 'attachment; filename=agentscallstats.csv',
+                  'Content-Type': 'text/csv'
+              });
+            res.send(csv);
+           
+          });
+      }
       else
         {
           data = null;
           console.log(error);
-        
-        //  res.render('agents',data);
+          //res.render('groups',data);
         
         }
      }
  
     request(options, callback);
 
-  });
+ });
+ 
+
 module.exports = router;

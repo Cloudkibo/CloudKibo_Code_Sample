@@ -4,8 +4,15 @@ block div#mycontent
     i(class = "fa fa-chain-broken")
       span 
         |Abandoned Calls Information
+    div
+    div(class = "control-group span6")
+      label
+        | Search :
+       
+      input(type="search" class="light-table-filter form-control input-medium input-inline" data-table="calls" placeholder="Enter search term")
+  
     div.bodycontainer.table-scrollable
-      table(class = "table table-striped table-bordered table-hover dataTable",id = "agents")
+      table(class = "table table-striped table-bordered table-hover calls",id = "agents")
         thead
           tr
             td 

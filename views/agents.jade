@@ -5,8 +5,15 @@ block div#mycontent
     i(class = "fa fa-user")
       span 
         |Agents Information
-    div.table-scrollable
-      table(class = "table table-striped table-bordered table-hover dataTable",id = "agents")
+    div
+    div(class = "control-group span6")
+      label
+        | Search :
+       
+      input(type="search" class="light-table-filter form-control input-medium input-inline" data-table="agentstable" placeholder="Filter")
+        
+    div.bodycontainer.table-scrollable
+      table(class = "table table-striped table-bordered table-hover agentstable",id = "agents")
         thead
           tr
             td 

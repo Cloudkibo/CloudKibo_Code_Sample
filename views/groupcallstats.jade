@@ -2,7 +2,7 @@ extends sidebar
 block div#mycontent
   
   ul(class="nav navbar-nav")
-    li(class="active")
+    li
       a(href="/")
         span
           | Datewise Call statistics
@@ -10,7 +10,7 @@ block div#mycontent
       a(href="/agentscallstats")
         span
           | Agentwise Call statistics
-    li
+    li(class="active")
       a(href="/groupcallstats")
         span
           | Groupwise Call statistics
@@ -18,7 +18,7 @@ block div#mycontent
   div(class = "caption",id = "datewisecalls")
     i(class = "fa fa-group")
       span 
-        |Datewise Call Statistics
+        |Groupwise Call Statistics
     div
     div(class = "control-group span6")
       label
@@ -36,20 +36,26 @@ block div#mycontent
                 |Date
             td
               span
-                |Call Status
+                |Department
+        
             td
               span
                 |Count
             
             
         tbody
-          - each object in mydata
+          - each object in deptcalls
             tr
               td= object._id.day+'-'+object._id.month+'-'+object._id.year
-              td=object._id.callStatus
+              - each obj in deptNames
+                if object._id.departmentid == obj._id
+                  td=obj.deptname
+                  
               td=object.count
+             
+                  
         
-    a(href ='/downloadcsv/',class = "downloadcsv btn btn-info")
+    a(href ='/groupcallstats/downloadcsv/',class = "downloadcsv btn btn-info")
           |Export data in CSV
               
                 

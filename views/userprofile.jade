@@ -1,0 +1,15 @@
+extends sidebar
+block div#mycontent
+  div.caption
+    i(class = "glyphicon glyphicon-link")
+      span 
+        |User Profile
+    div.bodycontainer.table-scrollable
+      table(class = "table table-striped table-bordered table-hover dataTable",id = "agents")
+        tbody
+          - for(i in mydata) {
+              tr
+                td=i
+                td=mydata[i]
+          - }
+              
