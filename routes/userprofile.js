@@ -9,7 +9,9 @@ var fs = require('fs');
 var  headers =  {
               'kibo-app-id': '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
               'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
-              'kibo-client-id': 'Zarmeen'     
+              'kibo-client-id': 'Zarmeen',
+                'content-type' : 'application/x-www-form-urlencoded'
+              
           }
 /* GET userprofile. */
 router.get('/userprofile', function(req, res, next) {
@@ -80,8 +82,9 @@ router.get('/userprofile', function(req, res, next) {
  router.get('/userchat', function(req, res, next) {
 
    var options = {
-          url: 'https://api.cloudkibo.com/api/userchat/',
-          headers:headers
+          url: 'https://api.cloudkibo.com/api/userchat',
+          headers:headers,
+          form:{ 'user._id': "568ccd550ab4e5565c94f092",'user1':'Zarmeen','user2':'zarmeen92' }
         };
 
     function callback(error, response, body) {
@@ -103,7 +106,7 @@ router.get('/userprofile', function(req, res, next) {
         }
      }
  
-    request(options, callback);
+    request.post(options, callback);
 
  });
  

@@ -20,11 +20,11 @@ var userprofile = require('./routes/userprofile');
 
 
 var app = express();
-
+//var app = express.createServer();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.set('port', process.env.PORT || 9000);
+//app.set('port', process.env.PORT || '3000');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -76,7 +76,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-console.log("Express server listening on port " + app.get('port'));
-app.listen(app.get('port'));
-
+//console.log("Express server listening on port " + app.get('port'));
+//app.listen(app.get('port'));
 module.exports = app;

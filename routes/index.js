@@ -12,6 +12,10 @@ var  headers =  {
              'kibo-client-id': 'cd89f71715f2014725163952'     
           }
 /* GET home page. */
+/*router.get('/', function(req, res, next) {
+  res.send('Hello world');
+});
+*/
 router.get('/', function(req, res, next) {
 
    var options = {

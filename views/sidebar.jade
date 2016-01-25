@@ -85,7 +85,32 @@ block content
             a(href='/companyprofile/')
               i(class="glyphicon glyphicon-briefcase" , aria-hidden="true")
                 span(class="title")
-                  | Company          
+                  | Company 
+        li 
+          if(currentURL == '/userprofile/')
+            a(href='/userprofile/').current 
+          else
+            a(href='/userprofile/')
+              i(class="fa fa-user" , aria-hidden="true")
+                span(class="title")
+                  | User Profile
+        li 
+          if(currentURL == '/contactlist/')
+            a(href='/contactlist/').current 
+          else
+            a(href='/contactlist/')
+              i(class="fa fa-phone" , aria-hidden="true")
+                span(class="title")
+                  | Contact List
+         li 
+          if(currentURL == '/userchat/')
+            a(href='/userchat/').current 
+          else
+            a(href='/userchat/')
+              i(class="fa fa-phone" , aria-hidden="true")
+                span(class="title")
+                  | User Chat                 
+                  
   block div#mycontent
   div#footer
     span(class = 'cc')
