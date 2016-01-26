@@ -78,13 +78,18 @@ router.get('/userprofile', function(req, res, next) {
  
  //user chat
  
+ 
  // get contact list
  router.get('/userchat', function(req, res, next) {
-
+   res.render('userchat',{mydata:null});
+ });
+ router.post('/userchat', function(req, res, next) {
+   var username = 'Zarmeen';
+   var uid = "568ccd550ab4e5565c94f092";
    var options = {
           url: 'https://api.cloudkibo.com/api/userchat',
           headers:headers,
-          form:{ 'user._id': "568ccd550ab4e5565c94f092",'user1':'Zarmeen','user2':'zarmeen92' }
+          form:{ 'user._id': uid,'user1':username,'user2':req.body.contactname }
         };
 
     function callback(error, response, body) {
@@ -94,7 +99,7 @@ router.get('/userprofile', function(req, res, next) {
             var i =0;
             console.log('successfully fetched')
             console.log(info);  
-            res.render('userchat',{mydata:info});
+            res.render('userchat',{mydata:info.msg,uname1:username,uname2:req.body.contactname,uid:uid});
 
           }
       else
@@ -110,6 +115,62 @@ router.get('/userprofile', function(req, res, next) {
 
  });
  
+ /********* downloadcsv ********/    
+  router.post('/downloadcsv', function(req, res, next) {
+    res.set('Content-Type', 'application/octet-stream');
+       var options = {
+          url: 'https://api.cloudkibo.com/api/userchat',
+          headers:headers,
+          form:{ 'user._id': req.body.uid,'user1':req.body.uname1,'user2':req.body.uname2 }
+        };
+      
+    function callback(error, response, body) {
+      if (!error && response.statusCode == 200) {
+            var data = JSON.parse(body);
+            var info = data.msg;
+           // console.log(info);
+            var keys = [];
+            
+                  var key = 0;
+                  var val = info[0];
+                  for(j in val){
+                      var sub_key = j;
+                      var sub_val = val.j;
+                      //console.log(sub_key);
+                      keys.push(sub_key);
+                    
+                    }
+                    console.log(keys);
+
+
+           // var i =0;
+              json2csv({ data: info, fields: keys }, function(err, csv) {
+    if (err) {
+        console.log(err);
+    }
+
+    res.set({
+        'Content-Disposition': 'attachment; filename=userchat.csv',
+        'Content-Type': 'text/csv'
+    });
+    res.send(csv);
+});
+
+          }
+      else
+        {
+          data = null;
+          console.log(error);
+        
+        //  res.render('agents',data);
+        
+        }
+     }
+ 
+    request(options, callback);
+
+  });    
+
   
 
   

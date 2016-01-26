@@ -1,0 +1,59 @@
+extends sidebar
+block div#mycontent
+  div.caption
+    i(class = "glyphicon glyphicon-link")
+      span 
+        |User Chat
+    div
+    div(class = "control-group span6")
+      form(action = "/userchat",method="post")
+       
+        input(type="text" class="form-control input-medium input-inline" name = "contactname" placeholder="Enter contact's kibo name")
+        button(type="submit" class ="btn btn-primary")
+          |Submit
+  
+  
+    div.bodycontainer.table-scrollable
+      table(class = "table table-striped table-bordered table-hover calls",id = "agents")
+        thead
+          tr
+            td 
+              span
+                |To
+            td
+              span
+                |From
+            td
+              span
+                |Sender' FullName
+            td
+              span
+                |Message
+            td
+              span
+                |Date
+            
+            
+        tbody
+          form(action="/downloadcsv",method="post")
+             input(type="hidden" name ="uname1" value = uname1)
+             input(type="hidden" name ="uname2" value = uname2)
+             input(type="hidden" name ="uid" value = uid)
+             if(mydata == null)
+                td(colspan = 6,style = "text-align:center;")="Enter contact's name first."
+             else if (mydata.length != 0)
+                - each object in mydata
+                  tr
+                    td= object.to
+                    td=object.from
+                    td=object.fromFullName
+                    td=object.msg
+                    td=object.date
+                button(class = "downloadcsv btn btn-info" type="submit")
+                    |Export Chat data in CSV
+      
+              else
+                  tr
+                    td(colspan = 6,style = "text-align:center;")="No chat messages."
+    
+       
