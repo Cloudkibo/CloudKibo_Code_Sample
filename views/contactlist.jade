@@ -39,20 +39,23 @@ block div#mycontent
                 |Unread Message
             
         tbody
-         if (mydata.length != 0)
-            - each object in mydata
-              tr
-                td= object.contactid.firstname + ' ' + object.contactid.lastname
-                td=object.contactid.email
-                td=object.contactid.phone
-                td=object.contactid.username
-                td=object.contactid.status
-                td=object.detailsshared
-                td=object.unreadMessage
-          else
-              tr
-                td(colspan = 6,style = "text-align:center;")="You have no contacts."
-    a(href ='/contactlist/downloadcsv/',class = "downloadcsv btn btn-info")
-          |Export ContactList in CSV
-
+         form(action="/contactlist/downloadcsv",method="post")
+             - var dd=JSON.stringify(mydata)
+              input(type="hidden" name ="dd" value = dd)
+              if (mydata.length != 0)
+                  - each object in mydata
+                    tr
+                      td= object.contactid.firstname + ' ' + object.contactid.lastname
+                      td=object.contactid.email
+                      td=object.contactid.phone
+                      td=object.contactid.username
+                      td=object.contactid.status
+                      td=object.detailsshared
+                      td=object.unreadMessage
+                  button(class = "downloadcsv btn btn-info" type="submit")
+                    |Export Chat data in CSV
+                else
+                    tr
+                      td(colspan = 6,style = "text-align:center;")="You have no contacts."
+    
        

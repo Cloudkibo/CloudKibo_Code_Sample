@@ -4,6 +4,9 @@ var needle = require('needle');
 var https = require('https');
 var request = require('request');
 var moment = require('moment');
+var json2csv = require('json2csv');
+var fs = require('fs');
+
 var  headers =  {
              'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
              'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
@@ -42,5 +45,33 @@ router.get('/companyprofile', function(req, res, next) {
     request(options, callback);
 
     });  
+  // write companyprofile in csv
+  /********* download contact list in csv ********/    
+  router.post('/companyprofile/downloadcsv', function(req, res, next) {
+    res.set('Content-Type', 'application/octet-stream');
+    var info = JSON.parse(req.body.dd);//data.msg;
+    console.log(info);
+    var keys = [];
+    var key = 0;
     
+    var val = info;
+    for(j in val){
+          var sub_key = j;
+          var sub_val = val.j;
+          keys.push(sub_key);
+          }
+         console.log(keys);
+     json2csv({ data: info, fields: keys }, function(err, csv) {
+        if (err) {
+            console.log(err);
+        }
+
+      res.set({
+          'Content-Disposition': 'attachment; filename=companyprofile.csv',
+          'Content-Type': 'text/csv'
+      });
+    res.send(csv);
+    });
+
+  });  
 module.exports = router;

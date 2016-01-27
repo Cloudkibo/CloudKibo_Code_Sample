@@ -76,10 +76,50 @@ router.get('/userprofile', function(req, res, next) {
 
  });
  
+  /********* download contact list in csv ********/    
+  router.post('/contactlist/downloadcsv', function(req, res, next) {
+    res.set('Content-Type', 'application/octet-stream');
+    var info = JSON.parse(req.body.dd);//data.msg;
+    console.log(info);
+    var keys = [];
+    var key = 0;
+    
+    var val = info[0];
+    for(j in val){
+          var sub_key = j;
+          var sub_val = val.j;
+          if(sub_key == 'contactid')
+          {
+                          
+                          var valc = info[0].contactid;
+                          for(k in valc)
+                          {
+                            var sub_sub_key = k;
+                            var sub_sub_val = valc.k;
+                           // console.log(sub_sub_key);
+                            keys.push(sub_key+'.'+sub_sub_key);
+                          }
+          }
+          else
+          {
+          keys.push(sub_key);
+          }
+              }
+      console.log(keys);
+     json2csv({ data: info, fields: keys }, function(err, csv) {
+    if (err) {
+        console.log(err);
+    }
+
+    res.set({
+        'Content-Disposition': 'attachment; filename=contactlist.csv',
+        'Content-Type': 'text/csv'
+    });
+    res.send(csv);
+});
+
+  });
  //user chat
- 
- 
- // get contact list
  router.get('/userchat', function(req, res, next) {
    res.render('userchat',{mydata:null});
  });
@@ -115,36 +155,21 @@ router.get('/userprofile', function(req, res, next) {
 
  });
  
- /********* downloadcsv ********/    
-  router.post('/downloadcsv', function(req, res, next) {
+ /********* download user chat in csv ********/    
+  router.post('/userchat/downloadcsv', function(req, res, next) {
     res.set('Content-Type', 'application/octet-stream');
-       var options = {
-          url: 'https://api.cloudkibo.com/api/userchat',
-          headers:headers,
-          form:{ 'user._id': req.body.uid,'user1':req.body.uname1,'user2':req.body.uname2 }
-        };
-      
-    function callback(error, response, body) {
-      if (!error && response.statusCode == 200) {
-            var data = JSON.parse(body);
-            var info = data.msg;
-           // console.log(info);
-            var keys = [];
-            
-                  var key = 0;
-                  var val = info[0];
-                  for(j in val){
-                      var sub_key = j;
-                      var sub_val = val.j;
-                      //console.log(sub_key);
-                      keys.push(sub_key);
-                    
-                    }
-                    console.log(keys);
-
-
-           // var i =0;
-              json2csv({ data: info, fields: keys }, function(err, csv) {
+    var info = JSON.parse(req.body.dd);//data.msg;
+    console.log(info);
+    var keys = [];
+    var key = 0;
+    var val = info[0];
+    for(j in val){
+          var sub_key = j;
+          var sub_val = val.j;
+          keys.push(sub_key);
+              }
+      console.log(keys);
+     json2csv({ data: info, fields: keys }, function(err, csv) {
     if (err) {
         console.log(err);
     }
@@ -155,19 +180,6 @@ router.get('/userprofile', function(req, res, next) {
     });
     res.send(csv);
 });
-
-          }
-      else
-        {
-          data = null;
-          console.log(error);
-        
-        //  res.render('agents',data);
-        
-        }
-     }
- 
-    request(options, callback);
 
   });    
 

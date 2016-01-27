@@ -35,10 +35,9 @@ block div#mycontent
             
             
         tbody
-          form(action="/downloadcsv",method="post")
-             input(type="hidden" name ="uname1" value = uname1)
-             input(type="hidden" name ="uname2" value = uname2)
-             input(type="hidden" name ="uid" value = uid)
+          form(action="/userchat/downloadcsv",method="post")
+             - var dd=JSON.stringify(mydata)
+              input(type="hidden" name ="dd" value = dd)
              if(mydata == null)
                 td(colspan = 6,style = "text-align:center;")="Enter contact's name first."
              else if (mydata.length != 0)
