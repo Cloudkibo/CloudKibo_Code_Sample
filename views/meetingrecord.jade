@@ -1,0 +1,62 @@
+extends sidebar
+block div#mycontent
+  div.caption
+    i(class = "glyphicon glyphicon-link")
+      span 
+        |Meeting Record
+    div
+    div(class = "control-group span6")
+        label
+          | Search :
+       
+        input(type="search" class="light-table-filter form-control input-medium input-inline" data-table="meeting" placeholder="Enter search term")
+       
+    div.bodycontainer.table-scrollable
+      table(class = "table table-striped table-bordered table-hover meeting",id = "agents")
+        thead
+          tr
+            td 
+              span
+                |To
+            td
+              span
+                |From
+            td
+              span
+                |Visitor's Email
+            td
+              span
+                |Agent's Email
+            td
+              span
+                |Message
+            td
+              span
+                |Request ID
+            td
+              span
+                |Date               
+            
+            
+        tbody
+          form(action="/meetingrecord/downloadcsv",method="post")
+             - var dd=JSON.stringify(mydata)
+              input(type="hidden" name ="dd" value = dd)
+              if (mydata.length != 0)
+                - each object in mydata
+                  tr
+                    td= object.to
+                    td=object.from
+                    td=object.visitoremail
+                    td=object.agentemail
+                    td=object.msg
+                    td=object.request_id
+                    td=object.datetime
+                button(class = "downloadcsv btn btn-info" type="submit")
+                    |Export Meeting Record in CSV
+      
+              else
+                  tr
+                    td(colspan = 6,style = "text-align:center;")="No meeting record found."
+    
+       

@@ -109,7 +109,15 @@ block content
             a(href='/userchat/')
               i(class="fa fa-comment" , aria-hidden="true")
                 span(class="title")
-                  | User Chat                 
+                  | User Chat
+         li 
+          if(currentURL == '/meetingrecord/')
+            a(href='/meetingrecord/').current 
+          else
+            a(href='/meetingrecord/')
+              i(class="fa fa-group" , aria-hidden="true")
+                span(class="title")
+                  | Meeting Record                  
                   
   block div#mycontent
   div#footer

@@ -24,6 +24,7 @@ var companyprofile = require('./routes/companyprofile');
 var groupcallstats = require('./routes/groupcallstats');
 var agentscallstats = require('./routes/agentscallstats');
 var userprofile = require('./routes/userprofile');
+var meetingrecord = require('./routes/meetingrecord');
 
 var app = express();
 
@@ -51,6 +52,7 @@ app.use('/',companyprofile);
 app.use('/',groupcallstats);
 app.use('/',agentscallstats);
 app.use('/',userprofile);
+app.use('/',meetingrecord);
 
 
 /*http.createServer(app).listen(app.get('port'), function(){
