@@ -10,6 +10,8 @@ block div#mycontent
         | Search :
        
       input(type="search" class="light-table-filter form-control input-medium input-inline" data-table="calls" placeholder="Enter search term")
+      a(href ='/completedcalls/downloadcsv/',class = "downloadcsv btn btn-info")
+          |Export Visitor Calls data in CSV
   
   
     div.bodycontainer.table-scrollable
@@ -52,7 +54,5 @@ block div#mycontent
           else
               tr
                 td(colspan = 6,style = "text-align:center;")="No calls are in progress."
-    a(href ='/completedcalls/downloadcsv/',class = "downloadcsv btn btn-info")
-          |Export Visitor Calls data in CSV
 
        

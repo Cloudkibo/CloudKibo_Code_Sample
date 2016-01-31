@@ -11,6 +11,8 @@ block div#mycontent
         | Search :
        
       input(type="search" class="light-table-filter form-control input-medium input-inline" data-table="groups" placeholder="Enter search term")
+      a(href ='/groups/downloadcsv/',class = "downloadcsv btn btn-info")
+          |Export data in CSV
   
   
     div.bodycontainer.table-scrollable
@@ -42,8 +44,6 @@ block div#mycontent
               td=object.createdby.companyName
               td=object.creationdate
         
-      a(href ='/groups/downloadcsv/',class = "downloadcsv btn btn-info")
-          |Export data in CSV
               
                 
 

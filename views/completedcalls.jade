@@ -11,7 +11,9 @@ block div#mycontent
         | Search :
        
       input(type="search" class="light-table-filter form-control input-medium input-inline" data-table="completedcalls" placeholder="Enter search term")
-        
+      a(href ='/completedcalls/downloadcsv/',class = "downloadcsv btn btn-info")
+          |Export Visitor Calls data in CSV
+  
    
     div.bodycontainer.table-scrollable
       table(class = "table table-striped table-bordered table-hover completedcalls",id = "agents")
@@ -54,6 +56,4 @@ block div#mycontent
               tr
                 td(colspan = 6,style = "text-align:center;")="No calls have been completed or made."
         
-    a(href ='/completedcalls/downloadcsv/',class = "downloadcsv btn btn-info")
-          |Export Visitor Calls data in CSV
        

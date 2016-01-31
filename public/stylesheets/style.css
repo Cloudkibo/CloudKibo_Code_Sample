@@ -162,6 +162,7 @@ table#agent tbody
 .downloadcsv
 {
     float: right;
+    margin-right:5px;
    }
 .span6{
     overflow:hidden;

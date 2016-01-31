@@ -25,6 +25,8 @@ block div#mycontent
         | Search :
        
       input(type="search" class="light-table-filter form-control input-medium input-inline" data-table="myTableDatewise" placeholder="Enter Date(day-mon-YYYY)")
+      a(href ='/groupcallstats/downloadcsv/',class = "downloadcsv btn btn-info")
+          |Export data in CSV
         
    
     div.bodycontainer.table-scrollable
@@ -55,8 +57,6 @@ block div#mycontent
              
                   
         
-    a(href ='/groupcallstats/downloadcsv/',class = "downloadcsv btn btn-info")
-          |Export data in CSV
               
                 
 
