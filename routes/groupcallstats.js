@@ -104,7 +104,7 @@ router.get('/groupcallstats', function(req, res, next) {
         {
           data = null;
           console.log(error);
-          //res.render('groups',data);
+          res.send('could not fetch data.');
         
         }
      }

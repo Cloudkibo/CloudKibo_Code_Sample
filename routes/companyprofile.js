@@ -37,7 +37,7 @@ router.get('/companyprofile', function(req, res, next) {
         {
         //  data = null;
           console.log(error);
-        
+          res.send('could not fetch data.');
         
         }
      }

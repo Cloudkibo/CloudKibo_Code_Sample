@@ -32,7 +32,7 @@ router.get('/abandonedcalls', function(req, res, next) {
         {
         //  data = null;
           console.log(error);
-        
+          res.send('could not fetch data.');
         
         }
      }
