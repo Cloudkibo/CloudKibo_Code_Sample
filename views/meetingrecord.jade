@@ -35,6 +35,9 @@ block div#mycontent
                 |Request ID
             td
               span
+                |Company ID
+            td
+              span
                 |Date               
             
             
@@ -42,6 +45,7 @@ block div#mycontent
           form(action="/meetingrecord/downloadcsv",method="post")
              - var dd=JSON.stringify(mydata)
               input(type="hidden" name ="dd" value = dd)
+              
               if (mydata.length != 0)
                 - each object in mydata
                   tr
@@ -51,6 +55,7 @@ block div#mycontent
                     td=object.agentemail
                     td=object.msg
                     td=object.request_id
+                    td=object.companyid
                     td=object.datetime
                 button(class = "downloadcsv btn btn-info" type="submit")
                     |Export Meeting Record in CSV
