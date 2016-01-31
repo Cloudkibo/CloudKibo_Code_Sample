@@ -25,7 +25,8 @@ block div#mycontent
         | Search :
        
       input(type="search" class="light-table-filter form-control input-medium input-inline" data-table="myTableDatewise" placeholder="Enter Date(day-mon-YYYY)")
-        
+      a(href ='/downloadcsv/',class = "downloadcsv btn btn-info")
+          |Export data in CSV
    
     div.bodycontainer.table-scrollable
       table(class = "table table-striped table-bordered table-hover myTableDatewise",id = "agents")
@@ -49,8 +50,7 @@ block div#mycontent
               td=object._id.callStatus
               td=object.count
         
-    a(href ='/downloadcsv/',class = "downloadcsv btn btn-info")
-          |Export data in CSV
+    
               
                 
 
