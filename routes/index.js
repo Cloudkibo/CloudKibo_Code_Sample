@@ -19,7 +19,8 @@ var  headers =  {
 router.get('/', function(req, res, next) {
 
    var options = {
-          url: 'http://api.kibosupport.com/api/visitorcalls/datewisecallstats',
+          url: 'https://api.kibosupport.com/api/visitorcalls/datewisecallstats',
+          rejectUnauthorized : false,
           headers:headers
         };
 
