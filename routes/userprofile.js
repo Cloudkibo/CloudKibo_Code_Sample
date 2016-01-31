@@ -18,6 +18,7 @@ router.get('/userprofile', function(req, res, next) {
 
    var options = {
           url: 'https://api.cloudkibo.com/api/users/me',
+          rejectUnauthorized : false,
           headers:headers
         };
 
@@ -50,6 +51,7 @@ router.get('/userprofile', function(req, res, next) {
 
    var options = {
           url: 'https://api.cloudkibo.com/api/contactslist',
+          rejectUnauthorized : false,
           headers:headers
         };
 
@@ -129,6 +131,7 @@ router.get('/userprofile', function(req, res, next) {
    var options = {
           url: 'https://api.cloudkibo.com/api/userchat',
           headers:headers,
+          rejectUnauthorized : false,
           form:{ 'user._id': uid,'user1':username,'user2':req.body.contactname }
         };
 

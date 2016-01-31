@@ -18,6 +18,7 @@ var  headers =  {
 router.get('/companyprofile', function(req, res, next) {
     var options = {
           url: 'https://api.kibosupport.com/api/companyprofiles/fetch',
+          rejectUnauthorized : false,
           headers:headers
         };
   

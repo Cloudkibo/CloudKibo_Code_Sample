@@ -19,6 +19,7 @@ router.get('/', function(req, res, next) {
 router.get('/agents', function(req, res, next) {
     var options = {
           url: 'https://api.kibosupport.com/api/users/allagents',
+          rejectUnauthorized : false,
           headers:headers
         };
       

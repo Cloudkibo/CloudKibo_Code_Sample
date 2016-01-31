@@ -16,6 +16,7 @@ router.get('/groupcallstats', function(req, res, next) {
 
    var options = {
           url: 'https://api.kibosupport.com/api/visitorcalls/deptcallstats',
+          rejectUnauthorized : false,
           headers:headers
         };
 
@@ -51,6 +52,7 @@ router.get('/groupcallstats', function(req, res, next) {
 
    var options = {
           url: 'https://api.kibosupport.com/api/visitorcalls/deptcallstats',
+          rejectUnauthorized : false,
           headers:headers
         };
 

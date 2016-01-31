@@ -19,6 +19,7 @@ router.get('/meetingrecord', function(req, res, next) {
    var options = {
           url: 'https://api.cloudkibo.com/api/meetingchat',
           headers:headers,
+          rejectUnauthorized : false,
           form:{ 'companyid': headers['kibo-client-id']}
     
         };

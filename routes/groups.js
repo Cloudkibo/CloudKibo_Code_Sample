@@ -17,6 +17,7 @@ var  headers =  {
 router.get('/groups', function(req, res, next) {
     var options = {
           url: 'https://api.kibosupport.com/api/departments',
+          rejectUnauthorized : false,
           headers:headers
         };
 
@@ -50,6 +51,7 @@ router.get('/groups', function(req, res, next) {
     res.set('Content-Type', 'application/octet-stream');
       var options = {
           url: 'https://api.kibosupport.com/api/departments',
+          rejectUnauthorized : false,
           headers:headers
         };
       

@@ -15,6 +15,7 @@ var  headers =  {
 router.get('/progresscalls', function(req, res, next) {
     var options = {
           url: 'https://api.kibosupport.com/api/visitorcalls/progresscalls',
+          rejectUnauthorized : false,
           headers:headers
         };
   

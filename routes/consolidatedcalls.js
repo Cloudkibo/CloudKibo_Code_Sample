@@ -15,6 +15,7 @@ var  headers =  {
 router.get('/consolidatedcalls', function(req, res, next) {
     var options = {
           url: 'https://api.kibosupport.com/api/visitorcalls/consolidatedcalls',
+          rejectUnauthorized : false,
           headers:headers
         };
   

@@ -15,6 +15,7 @@ var  headers =  {
 router.get('/waitingcalls', function(req, res, next) {
     var options = {
           url: 'https://api.kibosupport.com/api/visitorcalls/waitingcalls',
+          rejectUnauthorized : false,
           headers:headers
         };
   

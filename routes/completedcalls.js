@@ -15,6 +15,7 @@ var  headers =  {
 router.get('/completedcalls', function(req, res, next) {
     var options = {
           url: 'https://api.kibosupport.com/api/visitorcalls/completedcalls',
+          rejectUnauthorized : false,
           headers:headers
         };
   
@@ -58,6 +59,7 @@ router.get('/completedcalls', function(req, res, next) {
     res.set('Content-Type', 'application/octet-stream');
       var options = {
           url: 'https://api.kibosupport.com/api/visitorcalls/',
+          rejectUnauthorized : false,
           headers:headers
         };
       
@@ -98,7 +100,7 @@ router.get('/completedcalls', function(req, res, next) {
           data = null;
           console.log(error);
         
-        //  res.render('agents',data);
+         res.send('Could not fetch data');
         
         }
      }
