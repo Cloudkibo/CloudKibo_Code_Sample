@@ -14,6 +14,7 @@ var  headers =  {
 router.get('/abandonedcalls', function(req, res, next) {
     var options = {
           url: 'https://api.kibosupport.com/api/visitorcalls/abandonedcalls',
+          rejectUnauthorized : false,
           headers:headers
         };
   

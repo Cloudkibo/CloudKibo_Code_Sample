@@ -16,6 +16,7 @@ router.get('/agentscallstats', function(req, res, next) {
 
    var options = {
           url: 'https://api.kibosupport.com/api/visitorcalls/agentcallstats',
+          rejectUnauthorized : false,
           headers:headers
         };
 
@@ -48,6 +49,7 @@ router.get('/agentscallstats', function(req, res, next) {
 
    var options = {
           url: 'https://api.kibosupport.com/api/visitorcalls/agentcallstats',
+          rejectUnauthorized : false,
           headers:headers
         };
 
@@ -98,7 +100,7 @@ router.get('/agentscallstats', function(req, res, next) {
         {
           data = null;
           console.log(error);
-          //res.render('groups',data);
+           res.send('Could not fetch data');
         
         }
      }

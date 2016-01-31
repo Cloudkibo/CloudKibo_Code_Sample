@@ -15,6 +15,7 @@ var  headers =  {
 router.get('/agents', function(req, res, next) {
     var options = {
           url: 'https://api.kibosupport.com/api/users/allagents',
+          rejectUnauthorized : false,
           headers:headers
         };
       
@@ -44,13 +45,10 @@ router.get('/agents', function(req, res, next) {
 /********* downloadcsv ********/    
   router.get('/agents/downloadcsv/', function(req, res, next) {
     res.set('Content-Type', 'application/octet-stream');
- //   var fields = ['firstname','lastname','email','phone','country','city','state','isAgent','isAdmin','isOwner','isSupervisor','website','companyName','uniqueid','picture','accountVerified',
- //                 'date','isDeleted','canIncludeAgent','canExcludeAgent','abandonedemail1','abandonedemail2','abandonedemail3','completedemail1','completedemail2',
- //                 'completedemail3','invitedemail1','invitedemail2','invitedemail3','allownotification','allowchime','role','ownerAs','hashedPassword','provider','salt'];
-   
       
       var options = {
           url: 'https://api.kibosupport.com/api/users/allagents',
+          rejectUnauthorized : false,
           headers:headers
         };
       
@@ -90,7 +88,7 @@ router.get('/agents', function(req, res, next) {
           data = null;
           console.log(error);
         
-        //  res.render('agents',data);
+          res.send('Could not fetch data');
         
         }
      }

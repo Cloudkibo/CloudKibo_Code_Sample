@@ -29,7 +29,7 @@ router.get('/userprofile', function(req, res, next) {
             var i =0;
             console.log(info.length)
             console.log(info);  
-            res.render('userProfile',{mydata:info});
+            res.render('userprofile',{mydata:info});
 
           }
       else
@@ -69,7 +69,7 @@ router.get('/userprofile', function(req, res, next) {
         {
           data = null;
           console.log(error);
-          //res.render('groups',data);
+           res.send('Could not fetch data');
         
         }
      }
