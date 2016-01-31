@@ -37,7 +37,7 @@ router.get('/', function(req, res, next) {
         {
           data = null;
           console.log(error);
-          //res.render('groups',data);
+          res.render('could not fetch data');
         
         }
      }
