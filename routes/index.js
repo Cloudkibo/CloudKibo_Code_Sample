@@ -12,105 +12,11 @@ var  headers =  {
              'kibo-client-id': 'cd89f71715f2014725163952'     
           }
 /* GET home page. */
-/*router.get('/', function(req, res, next) {
-  res.send('Hello world');
-});
-*/
+
 router.get('/', function(req, res, next) {
-
-   var options = {
-          url: 'https://api.kibosupport.com/api/visitorcalls/datewisecallstats',
-          rejectUnauthorized : false,
-          headers:headers
-        };
-
-    function callback(error, response, body) {
-      if (!error && response.statusCode == 200) {
-            var info = JSON.parse(body);
-            var data =[];
-            var i =0;
-            console.log(info.length)
-            console.log(info);  
-            res.render('index',{mydata:info});
-
-          }
-      else
-        {
-          data = null;
-          console.log(error);
-          res.send('could not fetch data');
-        
-        }
-     }
- 
-    request(options, callback);
+      res.render('index');
 
  });
 
-  router.get('/downloadcsv', function(req, res, next) {
 
-   var options = {
-          url: 'https://api.kibosupport.com/api/visitorcalls/datewisecallstats',
-          rejectUnauthorized : false,
-          headers:headers
-        };
-
-    function callback(error, response, body) {
-      if (!error && response.statusCode == 200) {
-            var info = JSON.parse(body);
-            var data =[];
-            var i =0;
-           // console.log(info.length)
-          //  console.log(info);
-            var val = info[0];
-            var keys = [];
-            for(j in val){
-                  var sub_key = j;
-                  var sub_val = val.j;
-                  console.log(sub_key);
-                  if(sub_key == '_id')
-                        {
-                          
-                          var valc = info[0]._id;
-                          for(k in valc)
-                          {
-                            
-                            var sub_sub_key = k;
-                            var sub_sub_val = valc.k;
-                            keys.push(sub_key + '.' + sub_sub_key);
-                          }
-                        }
-                  else
-                      {
-                        keys.push(sub_key);
-                      
-                      }
-            }
-                           
-            console.log(keys);
-            json2csv({ data: info, fields: keys }, function(err, csv) {
-                if (err) {
-                    console.log(err);
-                }
-
-              res.set({
-                  'Content-Disposition': 'attachment; filename=datewisecallstats.csv',
-                  'Content-Type': 'text/csv'
-              });
-            res.send(csv);
-           
-          });
-      }
-      else
-        {
-          data = null;
-          console.log(error);
-          //res.render('groups',data);
-        
-        }
-     }
- 
-    request(options, callback);
-
- });
 module.exports = router;

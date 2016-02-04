@@ -13,16 +13,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
-var agents = require('./routes/agents');
-var groups = require('./routes/groups');
-var completedcalls = require('./routes/completedcalls');
-var waitingcalls = require('./routes/waitingcalls');
-var inprogresscalls = require('./routes/inprogresscalls');
-var consolidatedcalls = require('./routes/consolidatedcalls');
-var abandonedcalls = require('./routes/abandonedcalls');
-var companyprofile = require('./routes/companyprofile');
-var groupcallstats = require('./routes/groupcallstats');
-var agentscallstats = require('./routes/agentscallstats');
 var userprofile = require('./routes/userprofile');
 var meetingrecord = require('./routes/meetingrecord');
 
@@ -41,16 +31,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/', routes);
-app.use('/', agents);
-app.use('/', groups);
-app.use('/', completedcalls);
-app.use('/', waitingcalls);
-app.use('/',inprogresscalls);
-app.use('/', consolidatedcalls);
-app.use('/',abandonedcalls);
-app.use('/',companyprofile);
-app.use('/',groupcallstats);
-app.use('/',agentscallstats);
 app.use('/',userprofile);
 app.use('/',meetingrecord);
 
