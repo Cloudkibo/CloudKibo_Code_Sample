@@ -1,0 +1,47 @@
+extends sidebar
+block div#mycontent
+  div.caption
+    i(class = "glyphicon glyphicon-link")
+      span 
+        |Schedule Meeting 
+    div
+      form(action="/schedule_meeting/generate_url",method="post")
+        table(class = "table table-striped table-bordered table-hover")
+          tbody
+            tr
+              td
+                label
+                  | Request ID
+              td
+                input(type="text" name ="requestid"  size = "30" class="form-control input-medium input-inline" value = request_id required)
+               
+            tr
+              td
+                label
+                  | Agent Name
+              td
+                input(type="text" name ="agentname" class="form-control input-medium input-inline" placeholder="Enter agent name" required) 
+            tr
+              td
+                 label
+                    | Agent's Email
+              td    
+                 input(type="email" name ="agentemail" class="form-control input-medium input-inline" placeholder="Enter agent's email" required) 
+            tr
+              td
+                label
+                  | Vistor Name
+              td  
+                input(type="text" name ="visitorname" class="form-control input-medium input-inline" placeholder="Enter visitor name" required) 
+            tr
+              td
+                label
+                  | Visitor's Email
+              td  
+                input(type="email" name ="visitoremail" class="form-control input-medium input-inline" placeholder="Enter visitor's email" required)
+            tr
+              td(colspan="2")
+                              button(class = "btn btn-info" type="submit")
+                                | Submit
+                     
+ 

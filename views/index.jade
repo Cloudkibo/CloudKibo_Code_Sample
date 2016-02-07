@@ -1,6 +1,39 @@
 extends sidebar
 block div#mycontent
-  p Welcome to CloudKibo Data Extraction Application
+  h1 Welcome to CloudKibo Data Extraction Application
+  if(typeof myinfo == 'undefined')
+        h3 Enter your credentials
+        form(action="/",method="post")
+              table(class = "table table-striped table-bordered table-hover")
+                tbody
+                  tr
+                    td
+                      label
+                        | kibo-app-id
+                    td
+                      input(type="text" name ="kiboappid"     class="form-control input-medium input-inline" placeholder ="Enter kibo-app-id" required)
+                     
+                  tr
+                    td
+                      label
+                        | kibo-app-secret
+                    td
+                      input(type="text" name ="kiboappsecret"  class="form-control input-medium input-inline" placeholder="Enter kibo-app-secret " required) 
+                  tr
+                    td
+                       label
+                          | kibo-client-id
+                    td    
+                       input(type="text" name ="kiboclientid"  class="form-control input-medium input-inline" placeholder="Enter kibo-client-id" required) 
+                  
+                  tr
+                    td(colspan="2")
+                                   button(class = "btn btn-info" type="submit")
+                                      | Submit
+  
+  else
+      div(style = "background-color :#00FFCC")
+        h3 "Credentials saved for this session.Keep extracting data from CloudKibo."
         
     
               

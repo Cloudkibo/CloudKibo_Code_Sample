@@ -18,5 +18,13 @@ router.get('/', function(req, res, next) {
 
  });
 
+router.post('/', function(req, res, next) {
+      req.session.kiboappid = req.body.kiboappid;
+      req.session.kiboappsecret = req.body.kiboappsecret;
+      req.session.kiboclientid = req.body.kiboclientid;
+     
+      res.render('index',{myinfo :"Session saved."});
+
+ });
 
 module.exports = router;

@@ -11,6 +11,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('client-sessions');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var userprofile = require('./routes/userprofile');
@@ -29,7 +30,13 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(session({secret: '1234567890QWERTY'}));
+app.use(session({
+  cookieName: 'session',
+  secret: '1234567890QWERTY',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
+}));
 app.use('/', routes);
 app.use('/',userprofile);
 app.use('/',meetingrecord);

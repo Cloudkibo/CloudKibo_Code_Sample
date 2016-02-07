@@ -1,0 +1,17 @@
+extends sidebar
+block div#mycontent
+  div.caption
+    i(class = "glyphicon glyphicon-link")
+      span 
+        |Meeting URLs 
+    div
+    div(class = "control-group span6")
+        label
+          | URL for Agent:
+        a(href=agenturl)
+          |agenturl
+        label
+          | URL for Visitor:
+        a(href=visitorurl)
+          |visitorurl
+          

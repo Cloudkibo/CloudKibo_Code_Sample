@@ -9,38 +9,43 @@ block content
   div(id = "slide-panel")
     div#nav
       ul
-        li 
-          if(currentURL == '/userprofile/')
-            a(href='/userprofile/').current 
-          else
+       li 
+          a(href='/')
+            i(class="fa fa-user" , aria-hidden="true")
+              span(class="title")
+                | Set Credentials
+       //
+         li 
             a(href='/userprofile/')
               i(class="fa fa-user" , aria-hidden="true")
                 span(class="title")
                   | User Profile
-        li 
-          if(currentURL == '/contactlist/')
-            a(href='/contactlist/').current 
-          else
-            a(href='/contactlist/')
-              i(class="fa fa-phone" , aria-hidden="true")
-                span(class="title")
-                  | Contact List
          li 
-          if(currentURL == '/userchat/')
-            a(href='/userchat/').current 
-          else
-            a(href='/userchat/')
-              i(class="fa fa-comment" , aria-hidden="true")
-                span(class="title")
-                  | User Chat
+              a(href='/contactlist/')
+                i(class="fa fa-phone" , aria-hidden="true")
+                  span(class="title")
+                    | Contact List
          li 
-          if(currentURL == '/meetingrecord/')
-            a(href='/meetingrecord/').current 
-          else
+              a(href='/userchat/')
+                i(class="fa fa-comment" , aria-hidden="true")
+                  span(class="title")
+                    | User Chat
+       li 
             a(href='/meetingrecord/')
               i(class="fa fa-group" , aria-hidden="true")
                 span(class="title")
-                  | Meeting Record                  
+                  | Meeting Record 
+       li 
+            a(href='/meetingrecord/')
+              i(class="fa fa-link" , aria-hidden="true")
+                span(class="title")
+                  | Conference Webhook         
+       li 
+            a(href='/schedule_meeting/')
+              i(class="fa fa-clock-o" , aria-hidden="true")
+                span(class="title")
+                  | Schedule Meeting
+                  
                   
   block div#mycontent
   div#footer

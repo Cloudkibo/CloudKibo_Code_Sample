@@ -8,7 +8,7 @@ var json2csv = require('json2csv');
 var fs = require('fs');
 var headers;
 /* Post meeting record. */
-router.get('/meetingrecord', function(req, res, next) {
+router.get('/webhook', function(req, res, next) {
   console.log(req.session.kiboappid);
   console.log(req.session.kiboappsecret);
   console.log(req.session.kiboclientid);

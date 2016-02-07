@@ -3,14 +3,20 @@ block div#mycontent
   div.caption
     i(class = "glyphicon glyphicon-link")
       span 
-        |Meeting Record
+        |Meeting Record 
     div
     div(class = "control-group span6")
         label
           | Search :
        
         input(type="search" class="light-table-filter form-control input-medium input-inline" data-table="meeting" placeholder="Enter search term")
-       
+        form(action="/meetingrecord/specific_conference",method="post", class = "control-group span6")
+          label
+            | Fetch Record of Specific Meeting
+          
+          input(type="text" name = "requestid" class="light-table-filter form-control input-medium input-inline" placeholder="Enter RequestID")
+          button(class = "btn btn-info" type="submit")
+            | Submit
     div.bodycontainer.table-scrollable
       table(class = "table table-striped table-bordered table-hover meeting",id = "agents")
         thead
@@ -62,6 +68,6 @@ block div#mycontent
       
               else
                   tr
-                    td(colspan = 6,style = "text-align:center;")="No meeting record found."
+                    td(colspan = 8,style = "text-align:center;")="No meeting record found."
     
        
