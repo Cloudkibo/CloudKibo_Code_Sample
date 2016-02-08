@@ -81,7 +81,6 @@ router.get('/meetingrecord', function(req, res, next) {
 
  /*     Get meeting record for specific meeting */
  router.post('/meetingrecord/specific_conference', function(req, res, next) {
-   console.log(req.body.requestid);
    var options = {
           url: 'https://api.cloudkibo.com/api/meetingchat/specific_conference',
           headers:headers,
@@ -89,7 +88,6 @@ router.get('/meetingrecord', function(req, res, next) {
           form:{ 'companyid': headers['kibo-client-id'],'request_id':req.body.requestid}
     
         };
-
     function callback(error, response, body) {
       if (!error && response.statusCode == 200) {
             var info = JSON.parse(body);
@@ -106,9 +104,7 @@ router.get('/meetingrecord', function(req, res, next) {
         
         }
      }
- 
     request.post(options, callback);
-
  });
 
  
@@ -121,6 +117,8 @@ router.get('/schedule_meeting', function(req, res, next) {
   res.render("schedule_meeting",{request_id:unique_id});
 });
 
+
+/********** Generate URL ***************/
 router.post('/schedule_meeting/generate_url', function(req, res, next) {
    console.log(req.body.requestid);
    
