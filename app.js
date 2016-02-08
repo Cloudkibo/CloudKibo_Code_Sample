@@ -16,6 +16,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var userprofile = require('./routes/userprofile');
 var meetingrecord = require('./routes/meetingrecord');
+var webhook = require('./routes/webhook');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use(session({
 app.use('/', routes);
 app.use('/',userprofile);
 app.use('/',meetingrecord);
+app.use('/',webhook);
 
 
 /*http.createServer(app).listen(app.get('port'), function(){

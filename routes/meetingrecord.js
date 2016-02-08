@@ -124,9 +124,9 @@ router.get('/schedule_meeting', function(req, res, next) {
 router.post('/schedule_meeting/generate_url', function(req, res, next) {
    console.log(req.body.requestid);
    
-   //url for agent
+   //url for agent and visitor
    var options = {
-          url: 'https://api.cloudkibo.com/api/meetingchat/generate_url_agent',
+          url: 'https://api.cloudkibo.com/api/meetingchat/generate_url',
           headers:headers,
           rejectUnauthorized : false,
           form:{ 'companyid': headers['kibo-client-id'],'request_id':req.body.requestid,'agentname':req.body.agentname,'agentemail':req.body.agentemail,'visitorname':req.body.visitorname,'visitoremail':req.body.visitoremail}
@@ -135,25 +135,9 @@ router.post('/schedule_meeting/generate_url', function(req, res, next) {
 
     function callback(error, response, body) {
       if (!error && response.statusCode == 200) {
-            var url_agent = JSON.parse(body);
-            console.log(url_agent);
-            //url for visitor
-                        var options_visitor = {
-                            url: 'https://api.cloudkibo.com/api/meetingchat/generate_url_visitor',
-                            headers:headers,
-                            rejectUnauthorized : false,
-                            form:{ 'companyid': headers['kibo-client-id'],'request_id':req.body.requestid,'agentname':req.body.agentname,'agentemail':req.body.agentemail,'visitorname':req.body.visitorname,'visitoremail':req.body.visitoremail}
-                      
-                          };
-                           function callback_visitor(error, response, body) {
-                                if (!error && response.statusCode == 200) {
-                                      var url_visitor = JSON.parse(body);
-                                      console.log(url_visitor);
-                                      res.render('url_meeting',{agenturl:url_agent.url,visitorurl:url_visitor.url});
-                                }
-                           }
-                           request.post(options_visitor, callback_visitor);
-
+            var url_meeting = JSON.parse(body);
+            console.log(url_meeting);
+            res.render("url_meeting",{meetingurl:url_meeting})
           }
       else
         {
