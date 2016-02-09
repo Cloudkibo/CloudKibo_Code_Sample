@@ -135,7 +135,7 @@ router.post('/schedule_meeting/generate_url', function(req, res, next) {
       if (!error && response.statusCode == 200) {
             var url_meeting = JSON.parse(body);
             console.log(url_meeting);
-            res.render("url_meeting",{meetingurl:url_meeting})
+            res.render("schedule_meeting",{request_id:req.body.requestid,meetingurl:url_meeting})
           }
       else
         {
