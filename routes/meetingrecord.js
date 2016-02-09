@@ -110,6 +110,13 @@ router.get('/meetingrecord', function(req, res, next) {
  
 /************* Schedule meeting *************/ 
 router.get('/schedule_meeting', function(req, res, next) {
+   headers =  {
+              'kibo-app-id': req.session.kiboappid ,
+              'kibo-app-secret': req.session.kiboappsecret,
+              'kibo-client-id': req.session.kiboclientid,
+              'content-type' : 'application/x-www-form-urlencoded'
+              
+          }
   var today = new Date();
    var uid = Math.random().toString(36).substring(7);
    var unique_id = 'h' + uid + '' + today.getFullYear() + '' + (today.getMonth()+1) + '' + today.getDate() + '' + today.getHours() + '' + today.getMinutes() + '' + today.getSeconds();
