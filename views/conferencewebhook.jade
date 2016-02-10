@@ -1,5 +1,7 @@
 extends sidebar
 block div#mycontent
+ form(action="/webhook/updatewebhook",method="post")
+  input(type="hidden",name="companyname",value = mydata.companyname)
   div.caption
     i(class = "glyphicon glyphicon-link")
       span 
@@ -17,8 +19,8 @@ block div#mycontent
     i(class = "glyphicon glyphicon-pencil")
       span 
         |Update Webhook
-    form(action="/webhook/updatewebhook",method="post")
-      input(type="text",value =mydata.webhook,name="newwebhook" size="50")
-      button(class = "btn btn-info" type="submit")
+    div
+      input(type="text",value =mydata.webhook,name="newwebhook" size="50" style="margin-left:5px;")
+      button(class = "btn btn-info" type="submit" style="margin-left:5px;")
                               | Submit
     

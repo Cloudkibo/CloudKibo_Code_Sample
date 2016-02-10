@@ -62,7 +62,7 @@ router.post('/webhook/updatewebhook', function(req, res, next) {
               'content-type' : 'application/x-www-form-urlencoded'
               
           }
-          console.log(req.body.newwebhook);
+   console.log(req.body.newwebhook);
    var options = {
   url: 'https://api.cloudkibo.com/api/companyaccounts/webhook',
   headers:headers,
@@ -74,9 +74,8 @@ router.post('/webhook/updatewebhook', function(req, res, next) {
     function callback(error, response, body) {
       if (!error && response.statusCode == 200) {
             var info = JSON.parse(body);
-            console.log(info.length)
             console.log(info);  
-            res.render('conferencewebhook');
+            res.render('conferencewebhook',{mydata:{'companyid':headers['kibo-client-id'],'companyname':req.body.companyname,'webhook':req.body.newwebhook}});
 
           }
       else
