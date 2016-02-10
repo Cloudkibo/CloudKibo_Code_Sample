@@ -60,3 +60,35 @@ We use Node.js module `request` to send our HTTP request to CloudKibo server:
 The above HTTP request would fetch all chat done in all support call sessions for a given company.
 
 Please refer to [Developer's Guide](https://www.cloudkibo.com/restapi) on CloudKibo website to get details on complete REST API.
+
+## Setup to run this application
+
+#### Install nodejs
+
+    sudo apt-get update
+    sudo apt-get install nodejs
+    sudo ln -s `which nodejs` /usr/local/bin/node
+
+install npm, which is the Node.js package manager
+
+    sudo apt-get install npm
+
+source: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
+
+#### Install Git
+
+    sudo apt-get update
+    sudo apt-get install git
+
+#### Clone the application on server from github:
+    git clone https://www.github.com/Cloudkibo/CloudKibo_Reports
+    
+Install server side libraries using:
+
+    npm install
+    
+Run the application using
+    
+    npm start
+    
+For request of new features or correction of any bug found, kindly open a new issue on this Github repository.
